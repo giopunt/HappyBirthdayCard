@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:background="#B4E0E1"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <TextView
+        android:text="Happy Birthday, Orlando!"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/say_goodbye"
+        android:textSize="34sp"
+        android:textColor="#FFF"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/candle"
+        android:id="@+id/candle"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/flame"
+        android:layout_above="@id/candle"/>
+
+    <TextView
+        android:text="from, Giovanni!"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/orlando"
+        android:textSize="34sp"
+        android:textColor="#FFF"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

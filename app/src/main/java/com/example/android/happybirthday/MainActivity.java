@@ -14,14 +14,15 @@ import android.widget.ImageView;
 public class MainActivity extends ActionBarActivity {
 
     private SoundMeter mSensor;
-    private static final int POLL_INTERVAL = 300;
+    private static final int POLL_INTERVAL = 200;
 
 
     public int counter = 0;
     public int mThreshold = 8;
     private int mPollDelay = 1;
 
-    public AnimationDrawable frameAnimation;
+    AnimationDrawable frameAnimation;
+    ImageView flameView;
     private Handler mHandler = new Handler();
 
     private Runnable mSleepTask = new Runnable() {
@@ -36,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
                 counter++;
             }
             if(counter > 4){
-                Log.i("HappyBirthday", "ANIMATE CANDLE!!! ####   " + amp);
+                flameView.setBackgroundResource(R.drawable.stick);
             }
             mHandler.postDelayed(mPollTask, POLL_INTERVAL);
         }
@@ -47,7 +48,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView flameView = (ImageView) findViewById(R.id.flame);
+        flameView = (ImageView) findViewById(R.id.flame);
         flameView.setBackgroundResource(R.drawable.animated_flame);
         frameAnimation = (AnimationDrawable) flameView.getBackground();
 
@@ -64,12 +65,11 @@ public class MainActivity extends ActionBarActivity {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+    public void onWindowFocusChanged(boolean hasFocus) {
+        if(hasFocus){
             frameAnimation.start();
-            return true;
         }
-        return super.onTouchEvent(event);
+        super.onWindowFocusChanged(hasFocus);
     }
 
     @Override
@@ -91,12 +91,6 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        frameAnimation.start();
     }
 
     private void start() {
